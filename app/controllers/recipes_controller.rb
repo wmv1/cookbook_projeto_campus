@@ -13,16 +13,25 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.create(recipe_params)
-    redirect_to @recipe
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to @recipe
+    else
+      flash[:alert] = 'Você deve informar todos os dados da receita'
+      render :new
+    end
   end
 
   def edit
   end
 
   def update
-    @recipe.update(recipe_params)
-    redirect_to @recipe
+    if @recipe.update(recipe_params)
+      redirect_to @recipe
+    else
+      flash[:alert] = 'Você deve informar todos os dados da receita'
+      render :new
+    end
   end
 
   private
