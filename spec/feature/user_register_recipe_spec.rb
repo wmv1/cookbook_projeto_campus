@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Visitor register recipe' do
+feature 'User register recipe' do
   scenario 'view send link' do
     visit root_path
 
