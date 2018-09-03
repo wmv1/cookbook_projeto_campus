@@ -3,8 +3,9 @@ require 'rails_helper'
 feature 'user mark recipe as feature' do
   scenario 'successfully' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
+    cuisine = Cuisine.create(name: 'Brasileira')
     Recipe.create(title: 'Bolo de cenoura', difficulty: 'Médio',
-                  recipe_type: recipe_type, cuisine: 'Brasileira',
+                  recipe_type: recipe_type, cuisine: cuisine,
                   cook_time: 50, ingredients: 'Farinha, açucar, cenoura',
                   cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes')
 
@@ -18,11 +19,12 @@ feature 'user mark recipe as feature' do
 
   scenario 'and they appear differently' do
     recipe_type = RecipeType.create(name: 'Sobremesa')
+    cuisine = Cuisine.create(name: 'Brasileira')
     principal_recipe_type = RecipeType.create(name: 'Prato principal')
     featured_recipe = Recipe.create(title: 'Bolo de cenoura',
                                     difficulty: 'Médio',
                                     recipe_type: recipe_type,
-                                    cuisine: 'Brasileira',
+                                    cuisine: cuisine,
                                     cook_time: 50,
                                     ingredients: 'Farinha, açucar, cenoura',
                                     cook_method: 'Cozinhe a cenoura, corte em pedaços pequenos, misture com o restante dos ingredientes',
@@ -30,7 +32,7 @@ feature 'user mark recipe as feature' do
 
     another_recipe = Recipe.create(title: 'Feijoada',
                                    recipe_type: principal_recipe_type,
-                                   cuisine: 'Brasileira', difficulty: 'Difícil',
+                                   cuisine: cuisine, difficulty: 'Difícil',
                                    cook_time: 90,
                                    ingredients: 'Feijão e carnes',
                                    cook_method: 'Misture o feijão com as carnes')
