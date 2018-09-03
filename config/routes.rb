@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show, :new, :create, :edit, :update] do
     patch 'feature', to: 'recipes#mark_featured', on: :member
   end
+  resources :recipe_types, only: [:new, :create, :show]
 end
