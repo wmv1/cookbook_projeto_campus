@@ -1,4 +1,7 @@
-<h1><%= @recipe.title %></h1>
+<h1>
+  <%= @recipe.title %>
+  <%= image_tag 'star.png' if @recipe.featured? %>
+</h1>
 <h3>Detalhes</h3>
 <p><%= @recipe.recipe_type %></p>
 <p><%= @recipe.cuisine %></p>
@@ -10,4 +13,6 @@
 <p><%= @recipe.cook_method %></p>
 
 <%= link_to 'Editar', edit_recipe_path(@recipe), class: 'btn btn-primary' %>
+<%= link_to 'Marcar como destaque', feature_recipe_path(@recipe),
+    class: 'btn btn-success', method: :patch %>
 <%= link_to 'Voltar', root_path, class: 'btn btn-secondary' %>

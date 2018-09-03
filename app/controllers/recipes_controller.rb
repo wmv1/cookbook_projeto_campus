@@ -1,8 +1,9 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update]
+  before_action :set_recipe, only: %i[show edit update mark_featured]
 
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(featured: false)
+    @featured_recipes = Recipe.where(featured: true)
   end
 
   def show
@@ -32,6 +33,12 @@ class RecipesController < ApplicationController
       flash[:alert] = 'Você deve informar todos os dados da receita'
       render :new
     end
+  end
+
+  def mark_featured
+    @recipe.update(featured: true)
+    flash[:success] = 'Receita marcada como destaque com sucesso!'
+    redirect_to @recipe
   end
 
   private

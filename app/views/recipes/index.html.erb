@@ -1,12 +1,16 @@
 <h1>CookBook</h1>
 <p>Bem-vindo ao maior livro de receitas online</p>
 
+<h3>Receitas destaque</h3>
+<div id="recipes-featured">
+  <% @featured_recipes.each do |recipe| %>
+    <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
+  <% end %>
+</div>
+
+<h3>Outras receitas</h3>
+<div id="other-recipes">
 <% @recipes.each do |recipe| %>
-  <h1><%= link_to recipe.title, recipe %></h1>
-  <ul>
-    <li><%= recipe.recipe_type %></li>
-    <li><%= recipe.cuisine %></li>
-    <li><%= recipe.difficulty %></li>
-    <li><%= recipe.cook_time_min %></li>
-  </ul>
+  <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
 <% end %>
+</div>
