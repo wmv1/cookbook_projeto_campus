@@ -10,7 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_160843) do
+ActiveRecord::Schema.define(version: 2018_09_03_170842) do
+
+  create_table "recipe_types", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "recipes", force: :cascade do |t|
     t.string "title"
@@ -23,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_09_03_160843) do
     t.text "ingredients"
     t.text "cook_method"
     t.boolean "featured", default: false
+    t.integer "recipe_type_id"
+    t.index ["recipe_type_id"], name: "index_recipes_on_recipe_type_id"
   end
 
 end

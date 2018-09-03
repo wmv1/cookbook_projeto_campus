@@ -10,7 +10,7 @@
 
 <h3>Outras receitas</h3>
 <div id="other-recipes">
-<% @recipes.each do |recipe| %>
-  <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
-<% end %>
+  <% @recipes.each do |recipe| %>
+    <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
+  <% end %>
 </div>
