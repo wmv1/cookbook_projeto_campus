@@ -1,1 +1,15 @@
 @import "bootstrap";
+
+.jumbotron {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.star-image {
+  height: 30px;
+}
+

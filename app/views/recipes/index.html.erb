@@ -1,16 +1,22 @@
-<h1>CookBook</h1>
-<p>Bem-vindo ao maior livro de receitas online</p>
+<section class="jumbotron text-center">
+  <h1>CookBook</h1>
+  <p class="lead">Bem-vindo ao maior livro de receitas online</p>
+</section>
 
-<h3>Receitas destaque</h3>
-<div id="recipes-featured">
-  <% @featured_recipes.each do |recipe| %>
-    <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
-  <% end %>
-</div>
+  <h3>Receitas destaque</h3>
+  <div id="recipes-featured">
+    <% @featured_recipes.each do |recipe| %>
+      <div class="row">
+        <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
+      </div>
+    <% end %>
+  </div>
 
-<h3>Outras receitas</h3>
-<div id="other-recipes">
-  <% @recipes.each do |recipe| %>
-    <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
-  <% end %>
-</div>
+  <h3>Outras receitas</h3>
+  <div id="other-recipes">
+    <% @recipes.each do |recipe| %>
+      <div class="row">
+        <%= render partial: 'recipe_short', locals: {recipe: recipe} %>
+      </div>
+    <% end %>
+  </div>

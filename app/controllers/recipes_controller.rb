@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update mark_featured]
+  before_action :set_recipe, only: %i[show edit update featured]
 
   def index
     @recipes = Recipe.where(featured: false)
@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  def mark_featured
+  def featured
     @recipe.update(featured: true)
     flash[:success] = 'Receita marcada como destaque com sucesso!'
     redirect_to @recipe
