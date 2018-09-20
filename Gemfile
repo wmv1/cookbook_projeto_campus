@@ -18,6 +18,8 @@ gem 'uglifier', '>= 1.3.0'
 
 #upload de fotos
 gem "paperclip", "~> 6.0.0"
+#Autenticacao
+gem 'devise'
 
 
 # Use CoffeeScript for .coffee assets and views

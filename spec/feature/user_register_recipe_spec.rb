@@ -1,22 +1,31 @@
 require 'rails_helper'
 
 feature 'User register recipe' do
-  scenario 'view send link' do
+  scenario 'not view send without login' do
     visit root_path
 
     expect(page).to have_link('Home', href: root_path, class: 'nav-link')
-    expect(page).to have_link('Enviar uma receita', href: new_recipe_path,
+    expect(page).not_to have_link('Enviar uma receita', href: new_recipe_path,
                                                     class: 'nav-link')
   end
 
   scenario 'successfully' do
     #cria os dados necessários, nesse caso não vamos criar dados no banco
+    User.create(email: 'teste@teste.com', password: '1234567890')
     RecipeType.create(name: 'Sobremesa')
     RecipeType.create(name: 'Entrada')
     Cuisine.create(name: 'Arabe')
 
     # simula a ação do usuário
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: 'teste@teste.com'
+    fill_in 'Password', with: '1234567890'
+    within 'form' do 
+      click_on 'Enviar'
+    end
+
+
     click_on 'Enviar uma receita'
 
     fill_in 'Título', with: 'Tabule'
@@ -40,11 +49,21 @@ feature 'User register recipe' do
     expect(page).to have_css('p', text: 'Trigo para quibe, cebola, tomate picado, azeite, salsinha')
     expect(page).to have_css('h3', text: 'Como Preparar')
     expect(page).to have_css('p', text:  'Misturar tudo e servir. Adicione limão a gosto.')
+    expect(page).to have_css('h3', text: 'Autor')
+    expect(page).to have_css('p', text: 'teste@teste.com')
   end
 
   scenario 'and must fill in all fields' do
     # simula a ação do usuário
+    User.create(email: 'teste@teste.com', password: '1234567890')
     visit root_path
+    click_on 'Entrar'
+    fill_in 'Email', with: 'teste@teste.com'
+    fill_in 'Password', with: '1234567890'
+    within 'form' do 
+      click_on 'Enviar'
+    end
+
     click_on 'Enviar uma receita'
 
     fill_in 'Título', with: ''

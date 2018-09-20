@@ -9,6 +9,7 @@ feature 'Visitor visit homepage' do
   end
 
   scenario 'and view recipe' do
+
     #cria os dados necessários
     recipe_type = RecipeType.create(name: 'Sobremesa')
     cuisine = Cuisine.create(name: 'Brasileira')

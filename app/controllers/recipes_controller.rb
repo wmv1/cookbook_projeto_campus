@@ -17,7 +17,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
     if @recipe.save
+      
       redirect_to @recipe
     else
       flash[:alert] = 'Você deve informar todos os dados da receita'
