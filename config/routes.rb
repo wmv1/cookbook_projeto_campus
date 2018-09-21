@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
   resources :recipe_types, only: [:new, :create, :show]
   resources :cuisines, only: [:show]
+  resources :users, only: [:index]
 end
