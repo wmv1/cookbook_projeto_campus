@@ -1,5 +1,5 @@
 <div class="col-md-4">
-  <div class="card mb-4 shadow-sm">
+  <div id="recipe-<%=recipe.id%>" class="card mb-4 shadow-sm">
     <%= image_tag 'https://via.placeholder.com/500x255' %>
     <div class="card-body">
     <h1 class="h4">
@@ -12,6 +12,10 @@
       <li><%= recipe.difficulty %></li>
       <li><%= recipe.cook_time_min %></li>
     </ul>
+    <% if current_user && current_user.email == recipe.user.email %> 
+
+    <%= link_to 'Apagar', recipe_path(recipe), method: :delete %>
+    <%end%>
     </div>
   </div>
 </div>

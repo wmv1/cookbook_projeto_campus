@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: %i[show edit update featured]
+  before_action :set_recipe, only: %i[show edit update featured destroy]
 
   def index
     @recipes = Recipe.where(featured: false)
@@ -45,6 +45,9 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+      @recipe.destroy 
+  end
   def featured
     @recipe.update(featured: true)
     flash[:success] = 'Receita marcada como destaque com sucesso!'
