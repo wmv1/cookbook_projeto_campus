@@ -18,6 +18,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
+    p @recipe
     if @recipe.save
       
       redirect_to @recipe
@@ -64,7 +65,7 @@ class RecipesController < ApplicationController
     
 
     if params[:image] == nil
-      params[:image] == "missing.png"
+       params[:image] == "missing.png"
     end 
     params.require(:recipe).permit(:title, :recipe_type_id, :cuisine_id,
                                    :difficulty, :cook_time, :ingredients,

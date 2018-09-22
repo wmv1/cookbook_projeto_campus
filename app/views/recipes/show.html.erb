@@ -25,7 +25,7 @@
 <% @recipe.base_ingredients.each do |base_ingredient|%>
   <p><%=base_ingredient.name%><p>
   <% end %>
-<% if current_user && current_user.email == @recipe.user.email || current_user.admin  %> 
+  <% if current_user && current_user.email == @recipe.user.email ||  current_user && current_user.admin  %> 
 <%= link_to 'Editar', edit_recipe_path(@recipe), class: 'btn btn-primary' %>
 <%= link_to 'Marcar como destaque', feature_recipe_path(@recipe),
     class: 'btn btn-success', method: :post %>

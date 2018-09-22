@@ -1,8 +1,12 @@
-  <h3>Usuários</h3>
+  <h1>Usuários</h1>
   <div>
-    <% @users.each do |user| %>
-      <div class="row">
-        <h1><%= user.email%><h1>
-      </div>
+  <ul>
+    <% for i in 0..@users.length-1 %>
+      
+     
+           <li><%= link_to "#{@users[i].email}",  edit_user_registration_path %> <% if @users[i].admin%> admin <%else%>membro <% end %>  </li>
+     
+      
     <% end %>
+    </ul>
   </div>
