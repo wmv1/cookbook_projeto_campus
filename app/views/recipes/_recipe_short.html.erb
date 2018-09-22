@@ -1,6 +1,11 @@
 <div class="col-md-4">
   <div id="recipe-<%=recipe.id%>" class="card mb-4 shadow-sm">
-    <%= image_tag 'https://via.placeholder.com/500x255' %>
+    
+      <% if recipe.image_file_name != nil %>
+        <%= image_tag recipe.image.url %>
+      <% else %>
+        <%= image_tag 'missing.png' %>
+      <% end %>
     <div class="card-body">
     <h1 class="h4">
       <%= image_tag 'star.png', class: 'star-image' if recipe.featured? %>
@@ -12,7 +17,7 @@
       <li><%= recipe.difficulty %></li>
       <li><%= recipe.cook_time_min %></li>
     </ul>
-    <% if current_user && current_user.email == recipe.user.email %> 
+    <% if current_user && current_user.email == recipe.user.email || current_user && current_user.admin %> 
 
     <%= link_to 'Apagar', recipe_path(recipe), method: :delete %>
     <%end%>
